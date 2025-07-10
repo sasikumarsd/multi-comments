@@ -9,6 +9,6 @@
     <div class="container py-4">
         @yield('content')
     </div>
-    @livewireScripts
+    @livewireScripts(['asset_url' => 'https://multi-comments-production.up.railway.app'])
 </body>
 </html>
