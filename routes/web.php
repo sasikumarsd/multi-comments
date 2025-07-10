@@ -15,13 +15,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/run-schedule', function (Request $request) {
-    if ($request->input('key') !== env('CRON_KEY')) {
-        abort(403, 'Unauthorized');
-    }
-
+Route::get('/run-schedule', function () {
     Artisan::call('schedule:run');
-    return 'Schedule executed.';
+    return 'Schedule triggered.';
 });
 
 
