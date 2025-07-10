@@ -15,6 +15,12 @@ Route::get('/', function () {
 });
 
 
+Route::get('/run-schedule', function (Request $request) {
+    abort_unless($request->query('key') === env('CRON_KEY'), 403);
+    Artisan::call('schedule:run');
+    return 'Schedule triggered.';
+});
+
 
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
